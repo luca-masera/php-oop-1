@@ -20,7 +20,25 @@ class Movie
         $this->vote_average = $vote;
     }
 
+    public function printCard()
+    {
+        $image = $this->poster_path;
+        $title = $this->title;
+        $overview = $this->overview;
+        $language = $this->original_language;
+        $vote = $this->vote_average;
 
+    }
+
+}
+$movieString = file_get_contents(__DIR__ . '/movie_db.json');
+$movieList = json_decode($movieString, true);
+
+$movies = [];
+
+
+foreach ($movieList as $item) {
+    $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['poster_path'], $item['original_language']);
 }
 
 ?>
