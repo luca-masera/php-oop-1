@@ -1,3 +1,7 @@
-<footer class="container text-center ">
-    <h5>Footer</h5>
+</main>
+<footer>
+    footer
 </footer>
+</body>
+
+</html>

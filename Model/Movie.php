@@ -2,31 +2,34 @@
 
 class Movie
 {
-    public int $id;
-    public string $title;
-    public string $poster_path;
-    public string $overview;
-    public string $original_language;
-    public float $vote_average;
+    private int $id;
+    private string $title;
+    private string $overview;
+    private float $vote_average;
+    private string $poster_path;
+
+    private string $original_language;
 
 
-    function __construct($id, $title, $image, $overview, $language, $vote)
+
+    function __construct($id, $title, $overview, $vote, $image, $language)
     {
         $this->id = $id;
         $this->title = $title;
-        $this->poster_path = $image;
         $this->overview = $overview;
-        $this->original_language = $language;
         $this->vote_average = $vote;
+        $this->poster_path = $image;
+        $this->original_language = $language;
+
     }
 
     public function printCard()
     {
         $image = $this->poster_path;
         $title = $this->title;
-        $overview = $this->overview;
-        $language = $this->original_language;
-        $vote = $this->vote_average;
+        $content = substr($this->overview, 0, 100) . '...';
+        $custom = $this->vote_average;
+        include __DIR__ . '/../Views/card.php';
 
     }
 
@@ -39,12 +42,8 @@ $movies = [];
 
 foreach ($movieList as $item) {
     $movies[] = new Movie($item['id'], $item['title'], $item['overview'], $item['vote_average'], $item['poster_path'], $item['original_language']);
+
 }
+//echo $movies[0]->title;
 
 ?>
-
-
-
-<div>
-    <h2>CIAO SONO IL MOVIE</h2>
-</div>
